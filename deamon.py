@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # copyright 2012 Florian Ludwig <f.ludwig@greyrook.com>
 
 import os
