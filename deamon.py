@@ -49,7 +49,6 @@ def main():
     def do():
         clip = Gtk.Clipboard.get (Gdk.SELECTION_PRIMARY)
 
-        print 'check'
         if select.select([s], [], [], 0)[0]:
             conn, _ = s.accept()
             print conn, _
@@ -75,4 +74,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
