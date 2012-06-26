@@ -34,7 +34,15 @@ def show_notification(msg, details='', urgent=False):
 
 
 def main():
-    #
+    # setup ctrl + c handler
+    def handler(signum, frame):
+        print 'ctrl + c received'
+        Gtk.main_quit()
+
+    # Set the signal handler and a 5-second alarm
+    signal.signal(signal.SIGINT, handler)
+
+    # setup socket
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     if os.path.exists(SOCKET_PATH):
         os.remove(SOCKET_PATH)
