@@ -68,12 +68,15 @@ def main():
                     print 'update'
                     text = clip.wait_for_text()
                     if text:
-                        show_notification('password for %s' % text.decode('utf-8'))
-                        text = gpwg.generate_pw(text, master_pw)
-                        clip.set_text(text, len(text))
+                        pw = gpwg.generate_pw(text, master_pw)
+                        clip.set_text(pw, len(text))
+                        show_notification('password for %s: %s...%s' % (
+                                           text.decode('utf-8'),
+                                           pw[0],
+                                           pw[-1],
+                                           ))
                 conn.close()
         return True
-
 
     #print 'kill -USR1 ' + str(os.getpid())
     GLib.timeout_add_seconds(1, do)
